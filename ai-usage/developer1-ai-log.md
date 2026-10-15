@@ -5,6 +5,7 @@
 - **Purpose:** Architecture design, UML Mermaid diagrams, and system analysis validation.
 - **Key Inputs:** Guided questions about OOP architecture, layering, and domain model constraints.
 - **Applied Code/Output:** Generated Mermaid syntax for class, hierarchy, and 4-layer diagrams. Refined analysis answers to be concise and accurate.
+feature/developer1-base
 # AI Log - Developer 1
 
 ## Requirement 5
@@ -42,3 +43,5 @@ Using Copilot allowed interpreting the audiovisual material and turning it into 
   - `docs: add JavaDoc for model classes`
 - Successful push to the branch `feature/developer1-base`.
 **Reflection:** Using Copilot helped solve path and GitHub synchronization problems, ensuring that requirement 6 was properly documented and versioned.
+
+main
