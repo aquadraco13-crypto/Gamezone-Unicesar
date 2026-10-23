@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.gamezone.service;
 
-/**
- *
- * @author Breiner
- */
+import com.gamezone.model.Person;
+import java.util.List;
+
 public interface IPersonService {
-    
+
+    void save(Person person);
+
+    Person findById(String id);
+
+    List<Person> findAll();
 }

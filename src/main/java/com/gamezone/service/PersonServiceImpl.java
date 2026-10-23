@@ -24,7 +24,7 @@ public class PersonServiceImpl implements IPersonService {
         if (person.getId() == null || person.getId().trim().isEmpty()) {
             throw new ValidationException("Person ID cannot be empty.");
         }
-        personRepository.save(person);
+        personRepository.addPerson(person); // antes: create(person)
     }
 
     @Override
@@ -38,21 +38,5 @@ public class PersonServiceImpl implements IPersonService {
     @Override
     public List<Person> findAll() {
         return personRepository.findAll();
-    }
-
-    @Override
-    public void update(Person person) {
-        if (person == null) {
-            throw new ValidationException("Person data cannot be null.");
-        }
-        personRepository.update(person);
-    }
-
-    @Override
-    public void delete(String id) {
-        if (id == null || id.trim().isEmpty()) {
-            throw new ValidationException("ID parameter cannot be empty.");
-        }
-        personRepository.delete(id);
     }
 }
