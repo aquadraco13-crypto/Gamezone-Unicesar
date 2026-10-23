@@ -1,59 +1,36 @@
 package com.gamezone.repository;
 
 import com.gamezone.model.Person;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonRepositoryImpl implements IPersonRepository {
+public class PersonRepositoryImpl {
+    private final String filePath = "persons.txt";
 
-    private final List<Person> personList;
+    public List<Person> loadAll() {
+        List<Person> persons = new ArrayList<>();
+        File file = new File(filePath);
+        if (!file.exists()) return persons;
 
-    public PersonRepositoryImpl() {
-        this.personList = new ArrayList<>();
-    }
-
-    @Override
-    public void addPerson(Person person) {
-        if (person != null && findById(person.getId()) == null) {
-            personList.add(person);
-        }
-    }
-
-    @Override
-    public Person findById(String id) {
-        for (Person p : personList) {
-            if (p.getId().equals(id)) {
-                return p;
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Lógica de lectura
             }
+        } catch (IOException e) {
+            throw new RuntimeException("Error al cargar datos desde el archivo de personas: " + filePath, e);
         }
-        return null;
+        return persons;
     }
 
-    @Override
-    public List<Person> findAll() {
-        return new ArrayList<>(personList);
-    }
-
-    @Override
-    public boolean updatePerson(Person person) {
-        if (person == null) {
-            return false;
-        }
-        for (int i = 0; i < personList.size(); i++) {
-            if (personList.get(i).getId().equals(person.getId())) {
-                personList.set(i, person);
-                return true;
+    public void saveAll(List<Person> persons) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (Person p : persons) {
+                // Lógica de escritura
             }
+        } catch (IOException e) {
+            throw new RuntimeException("Error al guardar los datos en el archivo de personas: " + filePath, e);
         }
-        return false;
-    }
-
-    @Override
-    public boolean deleteById(String id) {
-        Person found = findById(id);
-        if (found != null) {
-            return personList.remove(found);
-        }
-        return false;
     }
 }
