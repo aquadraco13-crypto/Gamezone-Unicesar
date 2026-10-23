@@ -1,6 +1,6 @@
 package com.gamezone.model;
 
-import com.gamezone.exceptions.InvalidCategoryException;
+import com.gamezone.exception.ValidationException;
 
 /**
  * Represents a promotion applied to a sale.
@@ -15,10 +15,10 @@ public class Promotion {
         if (!category.equals("VIDEOGAME") && 
             !category.equals("CONSOLE") && 
             !category.equals("ACCESSORY")) {
-            throw new InvalidCategoryException("Categoría inválida para la promoción.");
+            throw new ValidationException("Categoría inválida para la promoción.");
         }
         if (discountPercentage <= 0 || discountPercentage > 100) {
-            throw new IllegalArgumentException("El porcentaje de descuento debe estar entre 1 y 100.");
+            throw new ValidationException("El porcentaje de descuento debe estar entre 1 y 100.");
         }
         this.id = id;
         this.name = name;
