@@ -7,11 +7,24 @@ import java.util.List;
 
 /**
  * Service to handle product/accessory returns, monthly balance reports,
+feature/customer-return-history
+ * and customer return history (A4, A6, A7).
+=======
  * customer return history, and warranty cancellations (A4, A6, A7).
+develop
  */
 public class ReturnService {
 
     private final List<Return> returns;
+feature/customer-return-history
+
+    public ReturnService() {
+        this.returns = new ArrayList<>();
+    }
+
+    public ReturnService(List<Return> returns) {
+        this.returns = returns != null ? returns : new ArrayList<>();
+
     private final WarrantyService warrantyService;
 
     public ReturnService() {
@@ -41,6 +54,7 @@ public class ReturnService {
         }
         
         return refund;
+develop
     }
 
     /**
@@ -66,6 +80,14 @@ public class ReturnService {
 
     /**
      * Retrieves the return history for a specific customer within a date range (A7).
+feature/customer-return-history
+     *
+     * @param customerId ID of the customer
+     * @param startDate  Start date of the range
+     * @param endDate    End date of the range
+     * @return List of returns matching the criteria
+
+develop
      */
     public List<Return> getReturnHistoryByCustomer(String customerId, LocalDate startDate, LocalDate endDate) {
         List<Return> filteredReturns = new ArrayList<>();
