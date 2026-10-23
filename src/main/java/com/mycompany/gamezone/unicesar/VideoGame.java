@@ -1,5 +1,7 @@
 package com.mycompany.gamezone.unicesar;
  
+import com.gamezone.model.Product;
+
 
 /**
  *
