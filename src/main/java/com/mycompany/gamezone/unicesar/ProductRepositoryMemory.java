@@ -1,13 +1,21 @@
-package com.mycompany.gamezone.unicesar;
+package com.gamezone.repository;
 
+import com.gamezone.model.Product;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRepositoryMemory implements IProductRepository {
+
     private final List<Product> products = new ArrayList<>();
 
     @Override
     public void addProduct(Product product) {
+        if (product == null || product.getId() == null) {
+            throw new IllegalArgumentException("Product and its ID cannot be null.");
+        }
+        if (getProductById(product.getId()) != null) {
+            throw new IllegalArgumentException("A product with ID " + product.getId() + " already exists.");
+        }
         products.add(product);
     }
 
@@ -18,8 +26,11 @@ public class ProductRepositoryMemory implements IProductRepository {
 
     @Override
     public Product getProductById(String id) {
+        if (id == null) {
+            return null;
+        }
         for (Product product : products) {
-            if (product.getId().equalsIgnoreCase(id)) {
+            if (id.equalsIgnoreCase(product.getId())) {
                 return product;
             }
         }
@@ -28,8 +39,11 @@ public class ProductRepositoryMemory implements IProductRepository {
 
     @Override
     public boolean updateProduct(Product product) {
+        if (product == null || product.getId() == null) {
+            return false;
+        }
         for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getId().equalsIgnoreCase(product.getId())) {
+            if (product.getId().equalsIgnoreCase(products.get(i).getId())) {
                 products.set(i, product);
                 return true;
             }
@@ -39,7 +53,9 @@ public class ProductRepositoryMemory implements IProductRepository {
 
     @Override
     public boolean deleteProduct(String id) {
-        return products.removeIf(p -> p.getId().equalsIgnoreCase(id));
+        if (id == null) {
+            return false;
+        }
+        return products.removeIf(p -> id.equalsIgnoreCase(p.getId()));
     }
 }
-a

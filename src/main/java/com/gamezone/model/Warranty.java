@@ -1,6 +1,6 @@
 package com.gamezone.model;
 
-import com.gamezone.exceptions.UnsupportedWarrantyException;
+import com.gamezone.exception.ValidationException;
 
 /**
  * Represents a warranty for a product.
@@ -16,16 +16,16 @@ public class Warranty {
 
     public Warranty(String id, String productId, String saleId, boolean extended, double cost) {
         if (productId == null || productId.isEmpty()) {
-            throw new IllegalArgumentException("The product associated with the warranty can't be empty.");
+            throw new ValidationException("The product associated with the warranty can't be empty.");
         }
         if (saleId == null || saleId.isEmpty()) {
-            throw new IllegalArgumentException("The sale associated with the warranty can't be empty.");
+            throw new ValidationException("The sale associated with the warranty can't be empty.");
         }
         if (extended && !productId.startsWith("CONSOLE")) {
-            throw new UnsupportedWarrantyException("Only consoles can have an extended warranty.");
+            throw new ValidationException("Only consoles can have an extended warranty.");
         }
         if (cost < 0) {
-            throw new IllegalArgumentException("The cost of the warranty can't be negative.");
+            throw new ValidationException("The cost of the warranty can't be negative.");
         }
         this.id = id;
         this.productId = productId;
