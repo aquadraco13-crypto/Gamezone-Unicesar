@@ -48,10 +48,23 @@ main
 
 ---
 
+feature/solid-audit
+# AI Usage Documentation & Activity Log
+
+## Developer Overview
+- **Developer:** Developer 1
+- **Branch:** `feature/developer1-base`
+- **Project:** GameZoneUnicesar
+- **Language:** Java / NetBeans Project Structure
+
+## Requirement 7
+**Tool Used:** Artificial Intelligence tools (GitHub Copilot and Gemini) were utilized as technical collaborators to streamline the implementation of software requirements, debug Git version control issues, and structure project documentation.
+=======
 # AI Log - Developer 1
 
 ## Requirement 7
 **Tool Used:** Microsoft Copilot  
+develop
 **Purpose:** Support in extending architecture with repository pattern and UI queries.  
 
 **Key Inputs:**  
@@ -62,7 +75,20 @@ main
 **Applied Code/Output:**  
 - Implemented repository pattern for all entities.  
 - Added service methods to expose repository queries.  
+feature/solid-audit
+- Extended console menu with listing options. 
+-Aborted stuck rebases and restored modified working trees.
+- Resolved `.gitignore` merge conflicts between local and remote environments.
+- Renamed commits into standardized English convention (`feat: ...`, `docs: ...`). 
+
+**Reflection:**  
+Copilot provided step-by-step guidance to align the project with GRASP principles and requirement 7, ensuring consistency in English documentation and commit messages.
+
+## Verification & Compliance
+All code generated or refactored with AI assistance was reviewed, compiled, and tested locally in Apache NetBeans to verify functional accuracy and compliance with system requirements before pushing to the repository.
+
 - Extended console menu with listing options.  
 
 **Reflection:**  
 Copilot provided step-by-step guidance to align the project with GRASP principles and requirement 7, ensuring consistency in English documentation and commit messages.
+develop

@@ -1,4 +1,4 @@
-package com.mycompany.gamezone.unicesar;
+package com.gamezone.model;
 
 /**
  *
